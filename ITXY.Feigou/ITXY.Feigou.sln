@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITXY.Feigou", "ITXY.Feigou\ITXY.Feigou.csproj", "{AA44EA1D-23D6-4428-9402-D7D299DA8D62}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AA44EA1D-23D6-4428-9402-D7D299DA8D62}.Debug|x86.ActiveCfg = Debug|x86
+		{AA44EA1D-23D6-4428-9402-D7D299DA8D62}.Debug|x86.Build.0 = Debug|x86
+		{AA44EA1D-23D6-4428-9402-D7D299DA8D62}.Release|x86.ActiveCfg = Release|x86
+		{AA44EA1D-23D6-4428-9402-D7D299DA8D62}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
