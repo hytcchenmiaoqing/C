@@ -11,7 +11,28 @@ namespace FeiGou
 {
     public partial class UcFriend : UserControl
     {
-        public Friend CurFriend { get;set;}
+        private FormMain form;
+
+        public FormMain Form 
+        {
+            get { return form;}
+            set { form = value; }
+        }
+
+        private Friend curFriend;
+
+        public Friend CurFriend 
+        {
+            get { return curFriend; }
+            set{
+                 curFriend =value;
+                 this.lalNickName.Text=value.NickName;
+                 this.lalshuoshuo.Text=value.shuoshuo;
+                 this.picHeadImage.Image = this.form.ilHeadImages.Images[value.HeadImageIndex];
+
+            }
+        }
+
         public UcFriend()
         {
             InitializeComponent();

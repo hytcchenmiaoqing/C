@@ -12,8 +12,11 @@ using System.Threading;
 
 namespace FeiGou
 {
+
     public partial class FormMain : Form
     {
+        public delegate void delAddFriend(Friend friend);
+
         public FormMain()
         {
             InitializeComponent();
@@ -37,6 +40,7 @@ namespace FeiGou
                 if(datas[0] == "LOGIN")
                 {
                     Friend friend = new Friend();
+
                     int curIndex = Convert.ToInt32(datas[2]);
 
                     if (curIndex<0 || curIndex>=this.ilHeadImages.Images.Count)
@@ -47,13 +51,27 @@ namespace FeiGou
                     friend.HeadImageIndex = curIndex;
                     friend.NickName = datas[1];
                     friend.shuoshuo = datas[3];
+                    object[] pars = new object [1];
+                    pars[0]=friend;
+                    this.Invoke(new delAddFriend(this.addUcf),pars);
 
-                    UcFriend ucf = new UcFriend();
-                    ucf.CurFriend = friend;
-                    this.pnFriendlist.Controls.Add(ucf);
+
+
+                    //UcFriend ucf = new UcFriend();
+                    //ucf.CurFriend = friend;
+                    //this.pnFriendlist.Controls.Add(ucf);
                 }
             }
 
+        }
+
+        public void addUcf(Friend f)
+        {
+            UcFriend ucf = new UcFriend();
+            ucf.Form = this;
+            ucf.CurFriend = f;
+            ucf.Top = this.pnFriendlist.Controls.Count * ucf.Height;
+            this.pnFriendlist.Controls.Add(ucf);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -67,12 +85,12 @@ namespace FeiGou
             th.Start();
 
 
-            for (int i = 0; i < 100; i++)
-            {
-                UcFriend ucf = new UcFriend();
-                ucf.Top = i * ucf.Height;
-                this.pnFriendlist.Controls.Add(ucf);
-            }
+            ////for (int i = 0; i < 100; i++)
+            ////{
+            //    UcFriend ucf = new UcFriend();
+            //    ucf.Top = i * ucf.Height;
+            //    this.pnFriendlist.Controls.Add(ucf);
+            ////}
          
             
 
@@ -85,7 +103,7 @@ namespace FeiGou
              //发广播  
             UdpClient uc = new UdpClient();
             string myNickName=this.txtNickName.Text;
-            string msg = "LOGIN|" + myNickName +"|12|大家来找我把";
+            string msg = "LOGIN|" + myNickName +"|1|大家来找我把";
             byte[] bmsg = Encoding.Default.GetBytes(msg);
            uc.Send(bmsg, bmsg.Length, new IPEndPoint( IPAddress.Parse("255.255.255.255"),9527));
         }

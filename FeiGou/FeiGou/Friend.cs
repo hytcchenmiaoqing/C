@@ -11,7 +11,6 @@ namespace FeiGou
     {
         public string NickName { get; set; }
         public int HeadImageIndex { get; set; }
-
         public string shuoshuo { get; set; }
         public IPAddress IP { get; set; }
         //public bool IPopen { get; set; }
